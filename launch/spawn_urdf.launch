@@ -1,0 +1,17 @@
+
+<launch>
+    
+    <arg name="name" default="LIP"/>
+    <arg name="model" default="lip"/>
+
+    <arg name="world_frame" default="world"/>
+    <arg name="map_frame"   default="map"/>
+
+    <!-- send the lip robot XML to param server -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find inv_pend)/urdf/$(arg model).urdf'" />
+    
+    <node pkg="rviz" type="rviz" ns="/$(arg model)/" args="" respawn="True" respawn_delay="0.0" name="rviz" required="False"></node>
+
+
+</launch>
+
